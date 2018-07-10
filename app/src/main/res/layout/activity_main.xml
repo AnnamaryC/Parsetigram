@@ -34,13 +34,12 @@
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/vLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/vPass"
         android:layout_alignStart="@+id/vPass"
         android:layout_below="@+id/vPass"
         android:layout_marginTop="21dp"
-        android:text="Log In"
-        />
+        android:text="Log In" />
 </RelativeLayout>
