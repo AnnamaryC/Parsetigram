@@ -114,7 +114,7 @@ public class ComposeActivity extends AppCompatActivity {
                 Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
                 // RESIZE BITMAP, see section below
                 // Load the taken image into a preview
-                mImage = (ImageView) findViewById(R.id.acPhoto); //TODO esto lo graba en image view, sacalo de imaview y postealo
+                mImage = (ImageView) findViewById(R.id.acPhoto);
                 mImage.setImageBitmap(takenImage);
             } else { // Result was a failure
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();

@@ -2,13 +2,13 @@ package com.example.anitac.parsetigram;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.example.anitac.parsetigram.Models.Post;
 import com.parse.FindCallback;
@@ -17,11 +17,9 @@ import com.parse.ParseException;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-    private Button refreshBtn;
-
-    public final String APP_TAG = "fabPhoto ";
-    public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     private static final int REQUEST_CODE = 23;
+    private SwipeRefreshLayout swipeContainer; //for refresh
+    RecyclerView rvPosts;
 
 
 
@@ -35,14 +33,23 @@ public class HomeActivity extends AppCompatActivity {
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
 
-        refreshBtn = findViewById(R.id.ahRefresh);
+        rvPosts = (RecyclerView) findViewById(R.id.RecyclerTimeline);
 
-        refreshBtn.setOnClickListener(new View.OnClickListener(){
+
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View v) {
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
                 loadTopPosts();
+                swipeContainer.setRefreshing(false);
             }
         });
+
+        loadTopPosts();
 
     }
 
