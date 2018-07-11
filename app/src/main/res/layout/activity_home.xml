@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/black"
+        android:background="?attr/colorPrimary">
+
+    </android.support.v7.widget.Toolbar>
+
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,12 +27,26 @@
     android:layout_height="match_parent"
     tools:context="com.example.anitac.parsetigram.HomeActivity">
 
+
+
+    <ImageView
+        android:id="@+id/ahPhoto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@android:color/background_dark"
+        android:layout_margin="20dp"
+        />
+
     <EditText
         android:id="@+id/ahDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
+        android:layout_alignEnd="@id/ahPhoto"
+        android:layout_alignStart="@id/ahPhoto"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:ems="10"
@@ -42,3 +77,4 @@
         android:text="Refresh" />
 
 </RelativeLayout>
+</LinearLayout>

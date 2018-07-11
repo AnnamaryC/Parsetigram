@@ -12,7 +12,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainLoginActivity extends AppCompatActivity {
 
     private EditText mUsername;
     private EditText mPassword;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if (e == null){
                     Log.d("LogInActivity", "Log in successful!");
-                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    final Intent intent = new Intent(MainLoginActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
                 }
