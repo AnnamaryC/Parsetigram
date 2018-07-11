@@ -28,49 +28,10 @@
     tools:context="com.example.anitac.parsetigram.HomeActivity">
 
 
-
-    <ImageView
-        android:id="@+id/ahPhoto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@android:color/background_dark"
-        android:layout_margin="20dp"
-        />
-
-    <EditText
-        android:id="@+id/ahDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@id/ahPhoto"
-        android:layout_alignStart="@id/ahPhoto"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:ems="10"
-        android:hint="Description..."
-        android:selectAllOnFocus="false"
-        android:singleLine="true"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/ahCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/ahDescription"
-        android:layout_alignStart="@id/ahDescription"
-        android:layout_below="@id/ahDescription"
-        android:text="Create" />
-
     <Button
         android:id="@+id/ahRefresh"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/ahCreate"
-        android:layout_alignStart="@id/ahCreate"
-        android:layout_below="@id/ahCreate"
         android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="Refresh"

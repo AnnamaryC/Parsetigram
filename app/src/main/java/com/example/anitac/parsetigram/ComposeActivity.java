@@ -77,6 +77,7 @@ public class ComposeActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if(e == null){
                     Log.d("ComposeActivity", "Create post success");
+                    Toast.makeText(ComposeActivity.this, "Photo successfully posted!", Toast.LENGTH_LONG).show();
                 }
                 else{
                     e.printStackTrace();
