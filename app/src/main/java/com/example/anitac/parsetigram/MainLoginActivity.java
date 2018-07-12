@@ -21,20 +21,28 @@ public class MainLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) { //Bundle SaveInstanteState saves what u haave wrtten down when avtivity is destroyed i.e. orientation
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mUsername = findViewById(R.id.vUsername);
-        mPassword = findViewById(R.id.vPass);
-        mLogin = findViewById(R.id.vLogin);
+        ParseUser user = ParseUser.getCurrentUser();
+        if (user == null) { //if else statement remembers last user logged in, and auto-logs the user in
+            setContentView(R.layout.activity_main);
+            mUsername = findViewById(R.id.vUsername);
+            mPassword = findViewById(R.id.vPass);
+            mLogin = findViewById(R.id.vLogin);
 
-        mLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String username = mUsername.getText().toString();
-                final String password = mPassword.getText().toString();
+            mLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final String username = mUsername.getText().toString();
+                    final String password = mPassword.getText().toString();
 
-                Login(username, password);
-            }
-        });
+                    Login(username, password);
+                }
+            });
+        }
+        else{
+            final Intent intent = new Intent(MainLoginActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void Login(String username, String password){
