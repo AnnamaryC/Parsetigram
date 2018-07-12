@@ -55,4 +55,8 @@ public class MainLoginActivity extends AppCompatActivity {
         });
     }
 
+    public void onSignupAction(View view) {
+        final Intent intent = new Intent(MainLoginActivity.this, SignupActivity.class);
+        startActivity(intent);
+    }
 }

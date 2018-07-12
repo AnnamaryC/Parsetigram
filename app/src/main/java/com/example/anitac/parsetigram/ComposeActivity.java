@@ -78,6 +78,8 @@ public class ComposeActivity extends AppCompatActivity {
                 if(e == null){
                     Log.d("ComposeActivity", "Create post success");
                     Toast.makeText(ComposeActivity.this, "Photo successfully posted!", Toast.LENGTH_LONG).show();
+                    final Intent intent = new Intent(ComposeActivity.this, HomeActivity.class);
+                    startActivity(intent);
                 }
                 else{
                     e.printStackTrace();

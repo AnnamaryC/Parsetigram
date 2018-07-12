@@ -42,4 +42,39 @@
         android:layout_below="@+id/vPass"
         android:layout_marginTop="21dp"
         android:text="Log In" />
+
+    <TextView
+        android:id="@+id/account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginStart="25dp"
+        android:text="Don't have an account?"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/account"
+        android:layout_alignBottom="@+id/account"
+        android:layout_marginStart="7dp"
+        android:layout_toEndOf="@+id/account"
+        android:clickable="true"
+        android:onClick="onSignupAction"
+        android:text="Sign up."
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:text="OR"
+        android:textColor="@android:color/black"
+        />
 </RelativeLayout>
