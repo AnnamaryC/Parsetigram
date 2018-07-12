@@ -67,9 +67,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         try {
             holder.username.setText(post.getUser().fetchIfNeeded().getUsername());
             holder.actualPost.setText(post.getDescription());
-            //holder.actualDate.setText(tweet.createdAt);
-
-            Glide.with(context).load(post.getImage()).into(holder.instaImage);
+            //holder.actualDate.setText(post.createdAt);
+            Glide.with(context).load(post.getImage().getUrl()).into(holder.instaImage);
         } catch (ParseException e) {
             e.printStackTrace();
         }

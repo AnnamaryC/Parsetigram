@@ -50,7 +50,7 @@ public class ComposeActivity extends AppCompatActivity {
         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) { //does it have a camera
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            startActivityForResult(takePictureIntent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
 
         //create a post
@@ -116,6 +116,8 @@ public class ComposeActivity extends AppCompatActivity {
                 // Load the taken image into a preview
                 mImage = (ImageView) findViewById(R.id.acPhoto);
                 mImage.setImageBitmap(takenImage);
+
+                //Intent intent = new Intent();
             } else { // Result was a failure
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
