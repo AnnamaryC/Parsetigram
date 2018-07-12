@@ -95,7 +95,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void done(List<Post> objects, ParseException e) {
                 if (e== null){
-                    for(int i = 0; i < objects.size(); i++){
+                    for(int i = objects.size()-1; i >=0 ; i--){ //shows tops from most recent
                         Log.d("HomeActivity", "Post[" + i + "] = "
                                 + objects.get(i).getDescription()
                                 + "\nusername = " + objects.get(i).getUser().getUsername());
