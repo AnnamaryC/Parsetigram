@@ -13,7 +13,7 @@ import com.example.anitac.parsetigram.R;
 import org.parceler.Parcels;
 
 public class PostDetailsActivity extends AppCompatActivity {
-    Context context;
+    Context context = null ;
     TextView username;
     TextView description;
     ImageView photo;
@@ -24,6 +24,7 @@ public class PostDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_details);
 
+        context = getApplicationContext();
         username = findViewById(R.id.pdaUsername);
         description = findViewById(R.id.pdaDescription);
         photo = findViewById(R.id.pdaImage);

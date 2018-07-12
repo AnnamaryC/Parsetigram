@@ -28,7 +28,7 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".MainLoginActivity">
+        <activity android:name=".Activities.MainLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,11 +36,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activities.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ComposeActivity" />
-        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".Activities.ComposeActivity" />
+        <activity android:name=".Activities.SignupActivity" />
+        <activity android:name=".Activities.PostDetailsActivity"></activity>
     </application>
 
 </manifest>

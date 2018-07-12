@@ -1,8 +1,10 @@
-package com.example.anitac.parsetigram;
+package com.example.anitac.parsetigram.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.anitac.parsetigram.Activities.PostDetailsActivity;
 import com.example.anitac.parsetigram.Models.Post;
+import com.example.anitac.parsetigram.R;
 import com.parse.ParseException;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -24,13 +30,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     private List<Post> mPosts;
     //pass in the tweet aray in the constructor
     public PostAdapter(List<Post> posts){
-        mPosts = posts;
+        this.mPosts = posts;
     }
     Context context;
 
 
-    //create viewholder class
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    //create viewholder class clickable for details
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView instaImage;
         public TextView username;
         public  TextView actualPost;
@@ -43,6 +49,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             instaImage = itemView.findViewById(R.id.postImage);
             username = itemView.findViewById(R.id.userHandle);
             actualPost = itemView.findViewById(R.id.actualDescription);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+
+            if (position != RecyclerView.NO_POSITION) {
+                Log.d("Post Adapter", "Showing details of specific post.");
+                // get the post at the position, this won't work if the class is static
+                Post post = mPosts.get(position);
+                // create intent for the new activity
+                Intent intent = new Intent(context, PostDetailsActivity.class);
+                // serialize the post using parceler, use its short name as a key
+                intent.putExtra("user", Parcels.wrap(post));
+                // show the activity
+                context.startActivity(intent);
+            }
         }
     }
 

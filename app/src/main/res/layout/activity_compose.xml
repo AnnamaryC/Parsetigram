@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.anitac.parsetigram.ComposeActivity">
+    tools:context="com.example.anitac.parsetigram.Activities.ComposeActivity">
 
     <EditText
         android:id="@+id/acDescription"

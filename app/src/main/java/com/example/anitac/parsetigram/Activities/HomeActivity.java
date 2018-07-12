@@ -1,4 +1,4 @@
-package com.example.anitac.parsetigram;
+package com.example.anitac.parsetigram.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.anitac.parsetigram.Models.Post;
+import com.example.anitac.parsetigram.Adapters.PostAdapter;
+import com.example.anitac.parsetigram.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;

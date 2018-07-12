@@ -37,4 +37,8 @@ dependencies {
     // If you want to use the GPU Filters
     implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
     //glide transformation
+    implementation 'org.parceler:parceler-api:1.1.6'
+    //add post info on separate activiy
+    annotationProcessor 'org.parceler:parceler:1.1.6'
+    //add post info on separate activity
 }

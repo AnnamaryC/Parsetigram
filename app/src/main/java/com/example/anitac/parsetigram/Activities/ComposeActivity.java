@@ -1,4 +1,4 @@
-package com.example.anitac.parsetigram;
+package com.example.anitac.parsetigram.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.anitac.parsetigram.Models.Post;
+import com.example.anitac.parsetigram.R;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
