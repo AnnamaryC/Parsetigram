@@ -10,12 +10,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.anitac.parsetigram.Models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,9 +77,16 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.miCompose:
                 Intent intent = new Intent(this, ComposeActivity.class);
-
                 startActivityForResult(intent,REQUEST_CODE); //wrapping
-                //shows tweet after composing on timeline, UNLIKE startActivity
+                //shows post after composing on timeline, UNLIKE startActivity
+                return true;
+            case R.id.miLogout:
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                ParseUser.logOut();
+                currentUser = ParseUser.getCurrentUser(); // this will now be null
+                Toast.makeText(this, "Logged out" , Toast.LENGTH_LONG);
+                Intent logoutintent = new Intent(this, MainLoginActivity.class);
+                startActivity(logoutintent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

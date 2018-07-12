@@ -6,4 +6,10 @@
         app:showAsAction="ifRoom"
         android:title="Compose">
     </item>
+
+    <item
+        android:id="@+id/miLogout"
+        app:showAsAction="ifRoom"
+        android:title="Logout">
+    </item>
 </menu>
