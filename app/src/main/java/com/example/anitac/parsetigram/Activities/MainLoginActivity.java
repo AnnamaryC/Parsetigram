@@ -24,7 +24,7 @@ public class MainLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ParseUser user = ParseUser.getCurrentUser();
         if (user == null) { //if else statement remembers last user logged in, and auto-logs the user in
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_main_login);
             mUsername = findViewById(R.id.vUsername);
             mPassword = findViewById(R.id.vPass);
             mLogin = findViewById(R.id.vLogin);

@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context="com.example.anitac.parsetigram.Activities.PostDetailsActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/black"
+        android:background="?attr/colorPrimary">
+
+    </android.support.v7.widget.Toolbar>
+
     <ImageView
         android:id="@+id/pdaImage"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@android:color/black" />
+        app:srcCompat="@android:color/black"
+        android:layout_margin="10dp"
+        android:layout_below="@id/toolbar"/>
 
     <TextView
         android:id="@+id/pdaUsername"
