@@ -58,10 +58,16 @@ public class HomeActivity extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
-                loadTopPosts();
+                refreshingTopPosts();
                 swipeContainer.setRefreshing(false);
             }
         });
+        loadTopPosts();
+    }
+
+    private void refreshingTopPosts() {
+        postAdapter.clear();
+        postAdapter.addAll(posts);
         loadTopPosts();
     }
 
@@ -102,16 +108,20 @@ public class HomeActivity extends AppCompatActivity {
         postQuery.getTop()
                 .withUser();
 
+
         postQuery.findInBackground(new FindCallback<Post>() {
+
+
             @Override
             public void done(List<Post> objects, ParseException e) {
                 if (e== null){
-                    for(int i = objects.size()-1; i >=0 ; i--){ //shows tops from most recent
+
+                    for(int i = 0; i <objects.size() ; i++){ //shows tops from most recent
                         Log.d("HomeActivity", "Post[" + i + "] = "
                                 + objects.get(i).getDescription()
                                 + "\nusername = " + objects.get(i).getUser().getUsername());
-                        posts.add(objects.get(i));
-                        postAdapter.notifyItemInserted(posts.size() -1);
+                        posts.add(0,objects.get(i));
+                        postAdapter.notifyItemInserted(0);
                     }
                 }
                 else{
@@ -120,6 +130,10 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 
 
 

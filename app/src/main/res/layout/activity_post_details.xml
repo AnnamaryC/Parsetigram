@@ -43,4 +43,13 @@
         android:layout_below="@+id/pdaUsername"
         android:text="TextView"
         android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/pdaCreatedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pdaDescription"
+        android:layout_alignEnd="@+id/pdaImage"
+        android:layout_below="@+id/pdaImage"
+        android:text="TextView" />
 </RelativeLayout>

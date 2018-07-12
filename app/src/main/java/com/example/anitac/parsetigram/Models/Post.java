@@ -54,6 +54,10 @@ public class Post extends ParseObject {
 
     }
 
+//    public Date getCreatedAt(){
+//        return getDate(KEY_CREATED_AT);
+//    }
+
 
     public static class Query extends ParseQuery<Post> {
         public Query(){
@@ -61,7 +65,7 @@ public class Post extends ParseObject {
         }
 
         public Query getTop(){
-            setLimit(20);
+            setLimit(40);
             return this;
         }
 

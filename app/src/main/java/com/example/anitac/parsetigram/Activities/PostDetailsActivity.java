@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -16,11 +17,16 @@ import com.example.anitac.parsetigram.R;
 
 import org.parceler.Parcels;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class PostDetailsActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 5;
     Context context = null ;
     TextView username;
     TextView description;
+    TextView createdAt;
     ImageView photo;
     Post post;
 
@@ -37,12 +43,18 @@ public class PostDetailsActivity extends AppCompatActivity {
         context = getApplicationContext();
         username = findViewById(R.id.pdaUsername);
         description = findViewById(R.id.pdaDescription);
+        createdAt = findViewById(R.id.pdaCreatedAt);
         photo = findViewById(R.id.pdaImage);
 
         post = Parcels.unwrap(getIntent().getParcelableExtra("user"));
 
+        Date date = post.getCreatedAt(); //function already exits
+        String actualDate = date.toString();
+        actualDate = getRelativeTimeAgo(post.getCreatedAt().toString());
+
         username.setText(post.getUser().getUsername());
         description.setText(post.getDescription());
+        createdAt.setText(actualDate);
         Glide.with(context).load(post.getImage().getUrl()).into(photo);
 
     }
@@ -67,5 +79,21 @@ public class PostDetailsActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public String getRelativeTimeAgo(String rawJsonDate) {
+        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
+        sf.setLenient(true);
+
+        String relativeDate = "";
+        try {
+            long dateMillis = sf.parse(rawJsonDate).getTime();
+            relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
+                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return relativeDate;
     }
 }
