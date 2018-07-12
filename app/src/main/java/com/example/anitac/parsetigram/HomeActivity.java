@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,13 +14,18 @@ import android.view.MenuItem;
 import com.example.anitac.parsetigram.Models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 23;
     private SwipeRefreshLayout swipeContainer; //for refresh
     RecyclerView rvPosts;
+    PostAdapter postAdapter;
+    ArrayList<Post> posts;
 
 
 
@@ -27,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ParseObject.registerSubclass(Post.class);
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -34,7 +41,10 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         rvPosts = (RecyclerView) findViewById(R.id.RecyclerTimeline);
-
+        posts = new ArrayList<>();
+        postAdapter = new PostAdapter(posts);
+        rvPosts.setAdapter(postAdapter);
+        rvPosts.setLayoutManager(new LinearLayoutManager(this));
 
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
@@ -48,9 +58,7 @@ public class HomeActivity extends AppCompatActivity {
                 swipeContainer.setRefreshing(false);
             }
         });
-
         loadTopPosts();
-
     }
 
     //toolbar
@@ -78,6 +86,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //shows the 20 most recent posts
     public void loadTopPosts(){
+        final ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         final Post.Query postQuery = new Post.Query();
         postQuery.getTop()
                 .withUser();
@@ -90,6 +99,8 @@ public class HomeActivity extends AppCompatActivity {
                         Log.d("HomeActivity", "Post[" + i + "] = "
                                 + objects.get(i).getDescription()
                                 + "\nusername = " + objects.get(i).getUser().getUsername());
+                        posts.add(objects.get(i));
+                        postAdapter.notifyItemInserted(posts.size() -1);
                     }
                 }
                 else{
