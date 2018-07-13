@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.anitac.parsetigram.Activities.PostDetailsActivity;
+import com.example.anitac.parsetigram.Activities.ProfileActivity;
 import com.example.anitac.parsetigram.Models.Post;
 import com.example.anitac.parsetigram.R;
 import com.parse.ParseException;
@@ -34,6 +35,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
     //create viewholder class clickable for details
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        public  ImageView instaProfile;
         public ImageView instaImage;
         public TextView username;
         public  TextView actualPost;
@@ -42,15 +44,26 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         public ViewHolder(View itemView){
             super(itemView);
 
-            //perform findviewby id
+            instaProfile = itemView.findViewById(R.id.profilePic);
             instaImage = itemView.findViewById(R.id.postImage);
             username = itemView.findViewById(R.id.userHandle);
             actualPost = itemView.findViewById(R.id.actualDescription);
             itemView.setOnClickListener(this);
+
+
         }
 
         @Override
         public void onClick(View v) {
+            if(v.getId() == R.id.profilePic){ //TODO go from adapter to profile activity
+                final Intent intent = new Intent(context, ProfileActivity.class);
+                context.startActivity(intent);
+            }
+            else if(v.getId() == R.id.userHandle){
+                final Intent intent = new Intent(context, ProfileActivity.class);
+                context.startActivity(intent);
+            }
+
             int position = getAdapterPosition();
 
             if (position != RecyclerView.NO_POSITION) {
@@ -93,11 +106,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                     .load(post.getImage().getUrl())
                     //.placeholder(R.drawable.instagram_placeholder)
                     .into(holder.instaImage);
+            //Glide.with(context).load(post.getUser()).into(holder.instaProfile); TODO glide for profile pic
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
     }
+
 
     //to see the tweets
     @Override

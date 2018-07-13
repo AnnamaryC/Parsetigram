@@ -15,7 +15,10 @@ public class Post extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
-    public static final String KEY_CREATED_AT = "createdAt";
+    public static final String KEY_CREATED_AT = "createdAt"; //function created at already exists
+    public static final String KEY_HANDLE= "handle";
+    public static final String KEY_PROFILE_PICTURE = "profilePicture";
+    public static final String KEY_PROFILE_INFORMATION = "bioInformation";
 
     public Post(){
 
@@ -33,7 +36,6 @@ public class Post extends ParseObject {
 
     public void setDescription(String description){
         put(KEY_DESCRIPTION, description);
-
     }
 
     public ParseUser getUser(){
@@ -42,7 +44,6 @@ public class Post extends ParseObject {
 
     public void setUser(ParseUser user){
         put(KEY_USER, user);
-
     }
 
     public ParseFile getImage(){
@@ -54,10 +55,13 @@ public class Post extends ParseObject {
 
     }
 
-//    public Date getCreatedAt(){
-//        return getDate(KEY_CREATED_AT);
-//    }
+    public ParseFile getProfileImage(){
+        return getParseFile(KEY_PROFILE_PICTURE);
+    }
 
+    public ParseFile getHandle(){
+        return getParseFile(KEY_HANDLE);
+    }
 
     public static class Query extends ParseQuery<Post> {
         public Query(){

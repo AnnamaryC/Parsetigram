@@ -136,6 +136,7 @@ public class ComposeActivity extends AppCompatActivity {
                     // Load the selected image into a preview
                     mImage = (ImageView) findViewById(R.id.acPhoto);
                     mImage.setImageBitmap(selectedImage);
+                    //photoFile = photoFile.getAbsoluteFile();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Toast.makeText(this, "Error, can't choose photo from gallery", Toast.LENGTH_LONG);
