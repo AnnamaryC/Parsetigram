@@ -8,6 +8,7 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
+- [x] Style the login page to look like the real Instagram login page.
 - [x] User can sign up to create a new account using Parse authentication
 - [x] User can log in and log out of his or her account
 - [x] The current signed in user is persisted across app restarts
@@ -18,11 +19,10 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Style the login page to look like the real Instagram login page.
 - [ ] Style the feed to look like the real Instagram feed.
 - [ ] User should switch between different tabs - viewing all posts (feed view), capture (camera and photo gallery view) and profile tabs (posts made) using a Bottom Navigation View.
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
-- [ ] Show the username and creation time for each post
+- [x] Show the username and creation time for each post
 - [ ] After the user submits a new post, show an indeterminate progress bar while the post is being uploaded to Parse
 - User Profiles:
    - [ ] Allow the logged in user to add a profile photo
@@ -64,7 +64,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [2018] [Annamary W Cartagena]
+    Copyright [yyyy] [name of copyright owner]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
