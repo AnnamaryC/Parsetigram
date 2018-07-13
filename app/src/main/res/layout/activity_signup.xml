@@ -10,43 +10,44 @@
     <EditText
         android:id="@+id/enterEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_margin="5dp"
         android:layout_marginTop="79dp"
+        android:background="@drawable/opacity"
         android:ems="10"
         android:hint="Email adress"
         android:inputType="textEmailAddress"
         tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="107dp"
-        android:layout_margin="5dp"
-        />
+        tools:layout_editor_absoluteY="107dp" />
 
     <EditText
         android:id="@+id/enterUsername"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/enterEmail"
+        android:layout_margin="5dp"
+        android:background="@drawable/opacity"
         android:ems="10"
         android:hint="Username"
-        android:inputType="textPersonName"
-        android:layout_margin="5dp"/>
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/enterPassword"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/enterUsername"
+        android:layout_margin="5dp"
+        android:background="@drawable/opacity"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:password="true"
-        android:layout_margin="5dp"
-        />
+        android:password="true" />
 
     <Button
         android:id="@+id/button"
@@ -58,5 +59,6 @@
         android:layout_marginTop="70dp"
         android:text="Sign Up"
         android:onClick="onSignupAction"
+        android:background="@drawable/my_button_bg"
         />
 </RelativeLayout>
