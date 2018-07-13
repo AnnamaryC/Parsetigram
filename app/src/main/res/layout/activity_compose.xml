@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.anitac.parsetigram.Activities.ComposeActivity">
+    tools:context="com.example.anitac.parsetigram.Activities.ComposeActivity"
+    android:background="@drawable/purple_violet">
 
     <EditText
         android:id="@+id/acDescription"
@@ -14,6 +15,7 @@
         android:hint="Description"
         android:layout_below="@+id/acPhoto"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/opacity"
         ></EditText>
 
     <ImageView
@@ -34,9 +36,10 @@
         android:layout_below="@+id/acDescription"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
-        android:background="@android:color/holo_red_light"
+        android:background="@drawable/my_button_bg"
         android:text="Post"
         tools:layout_editor_absoluteX="296dp"
-        tools:layout_editor_absoluteY="46dp" />
+        tools:layout_editor_absoluteY="46dp"
+        />
 
 </RelativeLayout>
