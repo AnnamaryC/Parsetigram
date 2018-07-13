@@ -10,15 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.example.anitac.parsetigram.Activities.PostDetailsActivity;
 import com.example.anitac.parsetigram.Models.Post;
 import com.example.anitac.parsetigram.R;
 import com.parse.ParseException;
-
 import org.parceler.Parcels;
-
 import java.util.List;
 
 /**

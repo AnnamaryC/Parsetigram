@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import com.example.anitac.parsetigram.Models.Post;
 import com.example.anitac.parsetigram.Adapters.PostAdapter;
 import com.example.anitac.parsetigram.R;
@@ -110,12 +109,9 @@ public class HomeActivity extends AppCompatActivity {
 
 
         postQuery.findInBackground(new FindCallback<Post>() {
-
-
             @Override
             public void done(List<Post> objects, ParseException e) {
                 if (e== null){
-
                     for(int i = 0; i <objects.size() ; i++){ //shows tops from most recent
                         Log.d("HomeActivity", "Post[" + i + "] = "
                                 + objects.get(i).getDescription()
