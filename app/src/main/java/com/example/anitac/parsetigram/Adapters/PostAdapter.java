@@ -92,7 +92,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             holder.username.setText(post.getUser().fetchIfNeeded().getUsername());
             holder.actualPost.setText(post.getDescription());
             //holder.actualDate.setText(post.createdAt);
-            Glide.with(context).load(post.getImage().getUrl()).into(holder.instaImage);
+            Glide.with(context)
+                    .load(post.getImage().getUrl())
+                    //.placeholder(R.drawable.instagram_placeholder)
+                    .into(holder.instaImage);
         } catch (ParseException e) {
             e.printStackTrace();
         }
