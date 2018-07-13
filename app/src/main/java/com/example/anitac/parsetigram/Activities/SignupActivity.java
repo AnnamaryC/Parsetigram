@@ -3,7 +3,10 @@ package com.example.anitac.parsetigram.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,11 +26,15 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        // Find the toolbar view inside the activity layout
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+
         sUsername = findViewById(R.id.enterUsername);
         sPassword = findViewById(R.id.enterPassword);
         sEmail = findViewById(R.id.enterEmail);
-
-
     }
 
     public void onSignupAction(View view) {
@@ -53,5 +60,26 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_details, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.mdBack:
+                Intent intent = new Intent(this, MainLoginActivity.class);
+                startActivityForResult(intent, 56); //wrapping
+                //shows post after composing on timeline, UNLIKE startActivity
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

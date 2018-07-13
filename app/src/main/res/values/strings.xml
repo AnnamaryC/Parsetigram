@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Parsetigram</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="app_name">Welcome!</string>
+    <string name="title_activity_home">Timeline Activity</string>
 </resources>

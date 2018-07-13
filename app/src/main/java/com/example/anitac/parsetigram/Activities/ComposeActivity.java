@@ -24,14 +24,14 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ComposeActivity extends AppCompatActivity {
     private ImageView mImage;
     private EditText mDescription;
     private Button mPost;
-    public final String APP_TAG = "fabPhoto";
-    static final int REQUEST_IMAGE_CAPTURE = 1;
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
+    public final static int PICK_PHOTO_CODE = 1046;
     File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -124,6 +124,39 @@ public class ComposeActivity extends AppCompatActivity {
             } else { // Result was a failure
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
+        }
+
+        else if(requestCode == PICK_PHOTO_CODE){
+            if (data != null) {
+                Uri photoUri = data.getData();
+                // Do something with the photo based on Uri
+                Bitmap selectedImage = null;
+                try {
+                    selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoUri);
+                    // Load the selected image into a preview
+                    mImage = (ImageView) findViewById(R.id.acPhoto);
+                    mImage.setImageBitmap(selectedImage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, "Error, can't choose photo from gallery", Toast.LENGTH_LONG);
+
+                }
+
+            }
+        }
+    }
+
+    // Trigger gallery selection for a photo
+    public void onPickPhoto(View view) {
+        // Create intent for picking a photo from the gallery
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // Bring up gallery to select a photo
+            startActivityForResult(intent, PICK_PHOTO_CODE);
         }
     }
 

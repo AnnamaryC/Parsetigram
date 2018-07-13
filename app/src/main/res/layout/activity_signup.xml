@@ -7,24 +7,33 @@
     tools:context="com.example.anitac.parsetigram.Activities.SignupActivity"
     android:background="@drawable/gradient">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/black"
+        android:background="@drawable/purple_violet"
+        android:layout_marginBottom="10dp">
+    </android.support.v7.widget.Toolbar>
+
     <EditText
         android:id="@+id/enterEmail"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/enterUsername"
         android:layout_margin="5dp"
-        android:layout_marginTop="79dp"
+        android:layout_below="@+id/toolbar"
         android:background="@drawable/opacity"
         android:ems="10"
-        android:hint="Email adress"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="107dp" />
+        android:hint="Email address"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/enterUsername"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"

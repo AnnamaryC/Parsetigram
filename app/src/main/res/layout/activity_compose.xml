@@ -41,4 +41,14 @@
         tools:layout_editor_absoluteY="46dp"
         />
 
+    <Button
+        android:id="@+id/acGallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/composeButton"
+        android:background="@drawable/opacity"
+        android:text="Choose from Gallery"
+        android:onClick="onPickPhoto"/>
+
 </RelativeLayout>
