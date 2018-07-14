@@ -49,27 +49,32 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             username = itemView.findViewById(R.id.userHandle);
             actualPost = itemView.findViewById(R.id.actualDescription);
             itemView.setOnClickListener(this);
+            username.setOnClickListener(this);
+            instaProfile.setOnClickListener(this);
 
 
         }
 
         @Override
         public void onClick(View v) {
+            int position = getAdapterPosition();
+            Log.d("Post Adapter", "Showing details of specific post.");
+            // get the post at the position, this won't work if the class is static
+            Post post = mPosts.get(position);
             if(v.getId() == R.id.profilePic){ //TODO go from adapter to profile activity
                 final Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra("user", Parcels.wrap(post));
+                System.out.println("profilepicccc");
                 context.startActivity(intent);
             }
             else if(v.getId() == R.id.userHandle){
                 final Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra("user", Parcels.wrap(post));
+                System.out.println("handleee");
                 context.startActivity(intent);
             }
+            else if (position != RecyclerView.NO_POSITION) {
 
-            int position = getAdapterPosition();
-
-            if (position != RecyclerView.NO_POSITION) {
-                Log.d("Post Adapter", "Showing details of specific post.");
-                // get the post at the position, this won't work if the class is static
-                Post post = mPosts.get(position);
                 // create intent for the new activity
                 Intent intent = new Intent(context, PostDetailsActivity.class);
                 // serialize the post using parceler, use its short name as a key
@@ -106,7 +111,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                     .load(post.getImage().getUrl())
                     //.placeholder(R.drawable.instagram_placeholder)
                     .into(holder.instaImage);
-            //Glide.with(context).load(post.getUser()).into(holder.instaProfile); TODO glide for profile pic
+            Glide.with(context).load(post.getProfileImage().getUrl()).into(holder.instaProfile);
         } catch (ParseException e) {
             e.printStackTrace();
         }

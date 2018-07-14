@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide;
 import com.example.anitac.parsetigram.Models.Post;
 import com.example.anitac.parsetigram.R;
 
+import org.parceler.Parcels;
+
 public class ProfileActivity extends AppCompatActivity {
     TextView bio;
     ImageView profilePic;
@@ -23,8 +25,10 @@ public class ProfileActivity extends AppCompatActivity {
         profilePic = findViewById(R.id.paProfilePic);
         username = findViewById(R.id.paHandle);
 
+        post = Parcels.unwrap(getIntent().getParcelableExtra("user"));
 
-        username.setText(post.getHandle().toString());
+        username.setText(post.getUser().getUsername());
+        bio.setText(post.getBio());
         Glide.with(this).load(post.getProfileImage().getUrl()).into(profilePic);
     }
 }

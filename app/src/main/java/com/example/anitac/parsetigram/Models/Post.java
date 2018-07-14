@@ -56,12 +56,14 @@ public class Post extends ParseObject {
     }
 
     public ParseFile getProfileImage(){
-        return getParseFile(KEY_PROFILE_PICTURE);
+        return getUser().getParseFile(KEY_PROFILE_PICTURE);
     }
 
-    public ParseFile getHandle(){
-        return getParseFile(KEY_HANDLE);
+    public String getHandle(){
+        return getUser().getString(KEY_HANDLE);
     }
+
+    public String getBio(){ return getUser().getString(KEY_PROFILE_INFORMATION); }
 
     public static class Query extends ParseQuery<Post> {
         public Query(){
